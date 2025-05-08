@@ -47,6 +47,22 @@ class _TabsScreenState extends State<TabsScreen> {
     });
   }
 
+  void _setScreen(String identifier) async {
+    Navigator.of(context).pop();
+    if (identifier == 'meals') {
+      Navigator.of(context).pushReplacementNamed('/');
+    }
+    if (identifier == 'filters') {
+      Navigator.of(context).pushReplacementNamed('/filters');
+    }
+    if (identifier == 'favorites') {
+      Navigator.of(context).pushReplacementNamed('/favorites');
+    }
+    if (identifier == 'categories') {
+      Navigator.of(context).pushReplacementNamed('/categories');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget activePage = CategoriesScreen(
@@ -64,7 +80,7 @@ class _TabsScreenState extends State<TabsScreen> {
 
     return Scaffold(
       appBar: AppBar(title: Text(activePageTitle)),
-      drawer: const MainDrawer(),
+      drawer: MainDrawer(onSelectScreen: _setScreen, ),
       body: activePage,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
