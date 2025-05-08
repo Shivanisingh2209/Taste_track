@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:taste_track/main.dart';
+import 'package:taste_track/screen/tabs.dart';
+import 'package:taste_track/widgets/main_drawer.dart';
 
 class FiltersScreen extends StatefulWidget {
   const FiltersScreen({super.key});
@@ -17,6 +19,16 @@ class _FiltersScreen extends State<FiltersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Your Filters')),
+      drawer: MainDrawer(onSelectScreen: (identifier) {
+        Navigator.of(context).pop();
+        if (identifier == 'meals') {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (ctx) => const TabsScreen(),
+            ),
+          );
+        };
+      },),
       body: Column(
         children: [
           SwitchListTile(
@@ -40,35 +52,6 @@ class _FiltersScreen extends State<FiltersScreen> {
             ),
             activeColor: Theme.of(context).colorScheme.tertiary,
             contentPadding: const EdgeInsets.only(left: 34, right: 22),
-          ),
-          SwitchListTile(
-            value: true,
-            onChanged: (isChecked) {},
-            title: Text(
-              'Vegetarian',
-              style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                color: Theme.of(context).colorScheme.onBackground,
-              ),
-            ),
-            subtitle: Text(
-              'Only include vegetarian meals',
-              style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                color: Theme.of(context).colorScheme.onBackground,
-              ),
-            ),
-            activeColor: Theme.of(context).colorScheme.tertiary,
-            contentPadding: const EdgeInsets.only(left: 34, right: 22),
-          ),
-          SwitchListTile(
-            value: true,
-            onChanged: (isChecked) {},
-            title: Text(
-              'Vegan',
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                color: Theme.of(context).colorScheme.onBackground,
-              ),
-            ),
-            subtitle: Text('Only include vegan meals'),
           ),
         ],
       ),

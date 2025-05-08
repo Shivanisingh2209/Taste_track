@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:taste_track/models/meal.dart';
 import 'package:taste_track/screen/categories.dart';
+import 'package:taste_track/screen/filters.dart';
 import 'package:taste_track/screen/meals.dart';
 import 'package:taste_track/screen/meals.dart';
 import 'package:taste_track/widgets/main_drawer.dart';
@@ -47,19 +48,12 @@ class _TabsScreenState extends State<TabsScreen> {
     });
   }
 
-  void _setScreen(String identifier) async {
+  void _setScreen(String identifier) {
     Navigator.of(context).pop();
-    if (identifier == 'meals') {
-      Navigator.of(context).pushReplacementNamed('/');
-    }
     if (identifier == 'filters') {
-      Navigator.of(context).pushReplacementNamed('/filters');
-    }
-    if (identifier == 'favorites') {
-      Navigator.of(context).pushReplacementNamed('/favorites');
-    }
-    if (identifier == 'categories') {
-      Navigator.of(context).pushReplacementNamed('/categories');
+      Navigator.of(
+        context,
+      ).pushReplacement(MaterialPageRoute(builder: (ctx) => const FiltersScreen()));
     }
   }
 
@@ -80,7 +74,7 @@ class _TabsScreenState extends State<TabsScreen> {
 
     return Scaffold(
       appBar: AppBar(title: Text(activePageTitle)),
-      drawer: MainDrawer(onSelectScreen: _setScreen, ),
+      drawer: MainDrawer(onSelectScreen: _setScreen),
       body: activePage,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
