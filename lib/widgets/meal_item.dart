@@ -10,11 +10,11 @@ class MealItem extends StatelessWidget {
   final void Function(Meal meal) onSelectMeal;
 
   String get complexityText {
-    return meal.complexity.name[0].toUpperCase() + meal.complexity.name[1];
+    return meal.complexity.name[0].toUpperCase() + meal.complexity.name.substring(1);
   }
 
   String get affordabilityText {
-    return meal.affordability.name[0].toUpperCase() + meal.affordability.name[1];
+    return meal.affordability.name[0].toUpperCase() + meal.affordability.name.substring(1);
   }
 
   @override
