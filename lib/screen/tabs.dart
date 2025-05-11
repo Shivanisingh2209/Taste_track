@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:taste_track/models/meal.dart';
 import 'package:taste_track/providers/favorites_provider.dart';
 import 'package:taste_track/screen/categories.dart';
 import 'package:taste_track/screen/filters.dart';
@@ -7,6 +6,7 @@ import 'package:taste_track/screen/meals.dart';
 import 'package:taste_track/widgets/main_drawer.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:taste_track/providers/meals_provider.dart';
+import 'package:taste_track/providers/filters_provider.dart';
 
 const kInitialFilters = {
   Filter.glutenFree: false,
